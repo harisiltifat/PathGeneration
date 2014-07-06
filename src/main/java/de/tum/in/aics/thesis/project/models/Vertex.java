@@ -11,6 +11,8 @@ public class Vertex implements Comparable<Vertex> {
 		private  String name;
 	    private List<Edge> adjacencies=new ArrayList<Edge>();
 	    private double minDistance = Double.POSITIVE_INFINITY;
+	    private double maxEntertainment =0;
+	    private double distanceFromSource=Double.POSITIVE_INFINITY;
 	    private Vertex previous;
 	    private String geometry;
 	    private double lat;
@@ -20,6 +22,8 @@ public class Vertex implements Comparable<Vertex> {
 	    private int stats;
 	    private String types;
 	    private boolean openNow;
+	    private boolean explored=false;
+	    
 	    public String toString() { return getName(); }
 	    
 	    public Vertex(String argName) 
@@ -27,7 +31,7 @@ public class Vertex implements Comparable<Vertex> {
 	    
 	    public int compareTo(Vertex other)
 	    {
-	        return Double.compare(getMinDistance(), other.getMinDistance());
+	        return Double.compare(getDistanceFromSource(), other.getDistanceFromSource());
 	    }
 		public int getLikes() {
 			return likes;
@@ -116,6 +120,30 @@ public class Vertex implements Comparable<Vertex> {
 
 		public void setPrevious(Vertex previous) {
 			this.previous = previous;
+		}
+
+		public double getMaxEntertainment() {
+			return maxEntertainment;
+		}
+
+		public void setMaxEntertainment(double maxEntertainment) {
+			this.maxEntertainment = maxEntertainment;
+		}
+
+		public double getDistanceFromSource() {
+			return distanceFromSource;
+		}
+
+		public void setDistanceFromSource(double distanceFromSource) {
+			this.distanceFromSource = distanceFromSource;
+		}
+
+		public boolean isExplored() {
+			return explored;
+		}
+
+		public void setExplored(boolean explored) {
+			this.explored = explored;
 		}
 
 }
