@@ -5,21 +5,9 @@ import java.util.Collections;
 import java.util.List;
 import java.util.PriorityQueue;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-
-
-
-
-
-
-
 import de.tum.in.aics.thesis.project.models.Location;
 import de.tum.in.aics.thesis.project.models.Place;
 import de.tum.in.aics.thesis.project.interfaces.IPathFindAlgorithm;
-import de.tum.in.aics.thesis.project.interfaces.ISearchService;
 import de.tum.in.aics.thesis.project.models.Edge;
 import de.tum.in.aics.thesis.project.models.Vertex;
 import de.tum.in.aics.thesis.project.util.Utilities;
@@ -142,25 +130,15 @@ public class PathFind_DijkstraDivImpl implements IPathFindAlgorithm {
 	private Vertex createVertex(Place place) {
 		Vertex vertex= new Vertex(place.getName());
 		vertex.setGeometry(place.getGeometry());
-
 		vertex.setRating(place.getRating());
-
-
 		if(place.getLikes()!=null)
 			vertex.setLikes(place.getLikes());
 		vertex.setTypes(place.getTypes());
 		vertex.setOpenNow(place.getOpenNow());
 		vertex.setStats(place.getStats());
-		JSONObject geometryJsonObj;
-
-		try {
-			geometryJsonObj = new JSONObject(vertex.getGeometry());
-			vertex.setLng(Double.parseDouble(geometryJsonObj.getString("lng")));
-			vertex.setLat(Double.parseDouble(geometryJsonObj.getString("lat")));
-		} catch (JSONException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		vertex.setLng(place.getLongitude());
+		vertex.setLat(place.getLatitude());
+		
 		return vertex;
 	}
 
@@ -173,6 +151,8 @@ public class PathFind_DijkstraDivImpl implements IPathFindAlgorithm {
 		place.setTypes(vertex.getTypes());
 		place.setOpenNow(vertex.getOpenNow());
 		place.setStats(vertex.getStats());
+		place.setLongitude(vertex.getLng());
+		place.setLatitude(vertex.getLat());
 		return place;
 	}
 }

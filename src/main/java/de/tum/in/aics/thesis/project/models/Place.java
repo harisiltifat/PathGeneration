@@ -1,14 +1,17 @@
 package de.tum.in.aics.thesis.project.models;
 
 public class Place {
-	
+
 	private String name;
 	private String geometry;
 	private boolean openNow;
 	private float rating;
+	private Integer ratingVotes;
 	private String types;
 	private Integer stats; 
 	private Integer likes;
+	private double latitude;
+	private double longitude;
 	
 	public String getName() {
 		return name;
@@ -66,5 +69,28 @@ public class Place {
 		this.likes = likes;
 	}
 	
+	public Integer getRatingVotes() {
+		return ratingVotes;
+	}
+
+	public void setRatingVotes(Integer ratingVotes) {
+		this.ratingVotes = ratingVotes;
+	}
+
+	public double getLatitude() {
+		return latitude;
+	}
+
+	public void setLatitude(double latitude) {
+		this.latitude = latitude;
+	}
+
+	public double getLongitude() {
+		return longitude;
+	}
+
+	public void setLongitude(double longitude) {
+		this.longitude = longitude;
+	}
 	
 }

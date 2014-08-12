@@ -21,9 +21,9 @@ public class Execute {
 	      List<Place> lstplaces= service.search(sourceLoc,destLoc);
 	      IPathFindAlgorithm algo=new PathFind_DijkstraDivImpl();
 	      List<Place> lstPath= algo.findPath(sourceLoc, destLoc, lstplaces, 0, 0);
-	     /* for(Place place:lstPath){
+	      for(Place place:lstPath){
 	    	  System.out.println(place.getName()+"Minimum distance:");
 	    	  
-	      }*/
+	      }
 	   }
 }

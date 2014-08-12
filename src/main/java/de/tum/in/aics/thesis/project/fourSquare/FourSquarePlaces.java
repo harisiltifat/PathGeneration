@@ -77,6 +77,17 @@ public class FourSquarePlaces {
 				place.setName(predsJsonArray.getJSONObject(i).getString("name"));
 
 				place.setGeometry(predsJsonArray.getJSONObject(i).getString("location"));
+				
+				try {
+					JSONObject geometryJsonObj;
+					geometryJsonObj = new JSONObject(place.getGeometry());
+					place.setLongitude(Double.parseDouble(geometryJsonObj.getString("lng")));
+					place.setLatitude(Double.parseDouble(geometryJsonObj.getString("lat")));
+					
+				} catch (JSONException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 
 				JSONArray catJsonArray = predsJsonArray.getJSONObject(i).getJSONArray("categories");
 				StringBuilder categories = new StringBuilder();
@@ -152,6 +163,17 @@ public class FourSquarePlaces {
 				place.setName(venueJsonObj.getString("name"));
 
 				place.setGeometry(venueJsonObj.getJSONObject("location").toString());
+				
+				try {
+					JSONObject geometryJsonObj;
+					geometryJsonObj = new JSONObject(place.getGeometry());
+					place.setLongitude(Double.parseDouble(geometryJsonObj.getString("lng")));
+					place.setLatitude(Double.parseDouble(geometryJsonObj.getString("lat")));
+					
+				} catch (JSONException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 				
 				JSONArray catgoryJsonArray = venueJsonObj.getJSONArray("categories");
 				StringBuilder categories = new StringBuilder();
