@@ -3,6 +3,7 @@ package de.tum.in.aics.thesis.project.main;
 import java.io.IOException;
 import java.util.List;
 
+import de.tum.in.aics.thesis.project.implementations.PathFind_DynammicAlgoImpl;
 import de.tum.in.aics.thesis.project.implementations.PathFind_DijkstraDivImpl;
 import de.tum.in.aics.thesis.project.implementations.PathFind_DijkstraSubImpl;
 import de.tum.in.aics.thesis.project.implementations.PathFind_DijkstraImpl;
@@ -19,10 +20,13 @@ public class Execute {
 		  Location sourceLoc=new Location(48.1438442,11.578250300000036);
 		  Location destLoc= new Location(48.137048000000000000,11.575385999999980000); 
 	      List<Place> lstplaces= service.search(sourceLoc,destLoc);
-	      IPathFindAlgorithm algo=new PathFind_DijkstraDivImpl();
-	      List<Place> lstPath= algo.findPath(sourceLoc, destLoc, lstplaces, 0, 0);
+	      /*IPathFindAlgorithm algo=new PathFind_DijkstraDivImpl();
+	      List<Place> lstPath= algo.findPath(sourceLoc, destLoc, lstplaces, 0, 0);*/
+	      
+	      IPathFindAlgorithm algo=new PathFind_DynammicAlgoImpl();
+	      List<Place> lstPath= algo.findPath(sourceLoc, destLoc, lstplaces, 120, 300);
 	      for(Place place:lstPath){
-	    	  System.out.println(place.getName()+"Minimum distance:");
+	    	  System.out.println(place.getName()+" Minimum distance:");
 	    	  
 	      }
 	   }
